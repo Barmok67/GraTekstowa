@@ -1,17 +1,18 @@
 body {
-  background-color: darkblue;
+  background-color: rgb(73, 37, 0);
 }
 
 #text {
   background-color: black;
-  color: white;
+  color: rgb(182, 182, 182);
   padding: 10px;
+  font-size: 20px;
 }
 
 #game {
-  max-width: 500px;
+  max-width: 550px;
   max-height: 400px;
-  background-color: lightgrey;
+  background-color: rgb(109, 109, 109);
   color: white;
   margin: 0 auto;
   padding: 10px;

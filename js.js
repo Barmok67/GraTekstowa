@@ -84,7 +84,7 @@ const locations = [
     name: "2 bandit camp",
     "button text": ["Zaatakuj strażnika", "Zakradnij się", "Wróć na plac zamkowy"],
     "button functions": [fightGuard, difrentWay, goTown],
-    text: "Zdecydowałeś udać się do bazy bandytów. Musiałeś dostać się do północnej bramy Venore, stamtąd już było widać stary młyn. Sięgasz wspomnieniami 10 lat wcześniej, pamiętasz, że jako nastolatek chodziłeś do starego Coraka własciciela młynu. Po śmierci starego młyniarza jego syn opuścił miasto. Miejsce to zostało bez właściciela. Po kwadransie marszu dotarłeś pod budowle, schowałeś się w lini drzew idących pare mil za miasto. Przed młynem stał jeden strażnik, musisz go pokonać lub znaleźć inne wejście."
+    text: "Zdecydowałeś udać się do bazy bandytów. Musiałeś dostać się do północnej bramy Venore, stamtąd już było widać stary młyn. Sięgasz wspomnieniami 10 lat wcześniej, pamiętasz, że jako nastolatek chodziłeś do starego Bardula własciciela młynu. Po śmierci starego młyniarza jego syn opuścił miasto. Miejsce to zostało bez właściciela. Po kwadransie marszu dotarłeś pod budowle, schowałeś się w lini drzew idących pare mil za miasto. Przed młynem stał jeden strażnik, musisz go pokonać lub znaleźć inne wejście."
   },
 
   {
@@ -100,7 +100,7 @@ const locations = [
     "button functions": [goTown, goTown, goTown],
     text: "Pokonałeś przeciwnika i otrzymałeś gold i doświadczenie."
   },
-ddd
+
   {
     name: "5 lose",
     "button text": ["Restart", "Restart", "Restart"],
@@ -110,8 +110,8 @@ ddd
 
   {
     name: "6 searchDifWay",
-    "button text": ["Wchodzę przez okno", "Zakradam się na front młynu", "Zbadaj ściany młynu"],
-    "button functions": [fightTwo, , checkWall],
+    "button text": ["Wchodzę przez okno", "Zakradam się na front młynu (atakuje strażnika)", "Zbadaj ściany młynu"],
+    "button functions": [fightTwo, fightGuard, checkWall],
     text: "Okrążyłeś młyn od zachodniej strony, strażnik bandytów nawet nie zwrócił na Ciebie uwagi. Podszedłeś pod samą granice budowali, przez okno usłyszałeś co najmniej dwie osoby. Walka z nimi w pojedynkę może być ryzykowne.",
   },
 
@@ -131,10 +131,31 @@ ddd
 
   {
     name: "9 afterTwo Bandits",
-    "button text": ["Cos", "Cos", "Cos"],
-    "button functions": [attack, dodge, throwRock],
-    text: "Z trudem uszedłeś z życiem, lecz na chwilę obecną zostałeś sam w pokoju "
+    "button text": ["Przeszukaj pomieszczenie", "Wyjdź z pomieszczenia", "Rozsyp proch po pokoju"],
+    "button functions": [searchRoom, leaveRoom , powder],
+    text: "Z trudem uszedłeś z życiem, lecz pokonałeś swoich przeciwników. Przeszukując ich ciała znalazłeś parę złotych monet. Rozglądasz się po pomieszczeniu, jest to gabinet, nie duży. W środkowej częsci pokoju znajduję się drewniane biurko. Z obu stron stoją krzesła i pod zachodnią ścianą umieszczona została szafka na książki lecz była pusta. Przed nią położony został rozcięty worek z prochem strzelniczym. *wdech* Tak! to zpewnością proch strzelniczy."
   },
+
+  {
+    name: "10 searchRoom",
+    "button text": ["Wyciągnij bandaż", "Wyjdź z pomieszczenia", "Rozsyp proch po pomieszczeniu"],
+    "button functions": [takeBandage, leaveRoom, powder],
+    text: "Podszedłeś do biurka zobaczyłeś na nim paczkę cygar.  Otworzyłeś szufladę w której znalazłeś ksiegę. Był to spis towaru, cały asortyment znajdujący się tu w młynie. Były też tam zapisane kolejne dostawy i co najważniejsze miejsce odbioru w mieście Thais. Thais jest stolicą krain Eberonu trafiłeś na cenną ksiegę. Wkładając ksiegę do plecaka zobaczyłeś plamy krwi na okładce. To była Twoja krew, podczas walki zostałeś ranny."
+  },
+
+  {
+    name: "11 backToHaul",
+    "button text": ["Wejdź na magazyn", "Wysadź stary młyn", "Rozsyp proch po pomieszczeniu"],
+    "button functions": [goMag, boom, powder],
+    text: "Podszedłeś do biurka zobaczyłeś na nim paczkę"
+  },
+
+  {
+    name: "12 goMag",
+    "button text": ["Zgłoś raport", "Sfałszuj spis i zgłoś raport", "Wysadź stary młyn"],
+    "button functions": [raport, moneyRaport, boom],
+    text: "Tylko po otwarciu drzwi do magazynu, przytłoczył Cię siarkowy zapach prochu strzelniczego. Znajdywało się tu tuzin beczek gotowych do transportu, wiele znich dalej stało puste. A po drugiej stronie leżała kupa worków z prochem. Jako oddany służbie żołnierz powinieneś jak najszybciej zgłosić to Generałowi Faltanowi, żeby zabezpieczyli towar i nie zwłocznie sprawdzili bandyckie dziuple w Thais. Hmmm a może by tak zanim zgłoszę to do Generała, sfałszować spis towaru i sprzedać na boku beczkę lub dwie. Przecież tylko ja wiem ile ich było nikt sie nie dopatrzy. Zostaje jeszcze opcja wysadzenia wszystkiego w powietrze."
+  }
 ];
 
 button1.onclick = goStore;
@@ -234,7 +255,7 @@ function throwRock() {
 }
 
 function searching() {
-
+  text.innerText = "Rozejrzałeś sie po holu, przypominał duży przedpokuj a zarazem kuchnię. Gdyż w kącie znajdował się mały stół z krzesłami, na którym znajdywały się talerze, dwa kufle z piwem i rozsypane karty. Nic ciekawego."
 }
 
 function restart() {
@@ -300,7 +321,7 @@ function fightDragon() {
 }
 
 function goMag() {
-
+  update(locations[12]);
 }
 
 function checkWall() {
@@ -343,4 +364,39 @@ function defeatMonsterTwo() {
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[9]);
+}
+
+function searchRoom() {
+  update(locations[10]);
+}
+
+function leaveRoom() {
+  update(locations[11]);
+}
+
+function powder() {
+  text.innerText = "Rozsypałeś proch po pomieszczeniu wcelu wysadzenia całego młynu w powietrze."
+}
+
+let oneTime = false;
+function takeBandage() {
+  if (oneTime) {
+    return;
+  }
+  health += 30
+  healthText.innerText = health;
+  oneTime = true;
+  text.innerText = "Wyciągnąłeś bandaż i po uprzednim odkarzeniu rany ramienia związałeś ją po całej powierzchni. Rana jest płytka i nie groźna."
+}
+
+function raport() {
+
+}
+
+function boom() {
+
+}
+
+function moneyRaport() {
+
 }
